@@ -11,5 +11,5 @@ public class CategoriaDTO {
     private Integer id;
     private String nombre;
     private String descripcion;
-    private Integer categoriaPadreId; // ID de la categoría padre
+    private Integer categoriaPadreId;
 }

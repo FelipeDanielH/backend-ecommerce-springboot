@@ -1,5 +1,6 @@
 package com.ecomarket.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -10,6 +11,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
+@Builder
 public class DetalleOrden {
 
     @Id
@@ -18,6 +20,7 @@ public class DetalleOrden {
 
     @ManyToOne
     @JoinColumn(name = "orden_id", nullable = false)
+    @JsonBackReference
     private Orden orden;
 
     @ManyToOne

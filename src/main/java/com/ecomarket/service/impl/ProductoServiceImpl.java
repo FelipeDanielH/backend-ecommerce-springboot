@@ -32,7 +32,7 @@ public class ProductoServiceImpl implements ProductoService {
                 .descripcion(producto.getDescripcion())
                 .precio(producto.getPrecio())
                 .stock(producto.getStock())
-                .estado(producto.getEstado().name())
+                .estado(producto.getEstado().name().toUpperCase())
                 .vendedorId(producto.getVendedor().getId())  // Asumiendo que Producto tiene una relación con Vendedor
                 .categoriaId(producto.getCategoria().getId())  // Asumiendo que Producto tiene una relación con Categoria
                 .build();
@@ -61,7 +61,6 @@ public class ProductoServiceImpl implements ProductoService {
                     .orElseThrow(() -> new RuntimeException("Categoría no encontrada"));
             producto.setCategoria(categoria);
         }
-
 
         return producto;
     }

@@ -27,7 +27,4 @@ public class Categoria {
     @ManyToOne
     @JoinColumn(name = "categoria_padre", referencedColumnName = "id", foreignKey = @ForeignKey(name = "categoria_padre"))
     private Categoria categoriaPadre;
-
-    @OneToMany(mappedBy = "categoriaPadre", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Categoria> subcategorias;
 }
