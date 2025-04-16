@@ -1,12 +1,16 @@
 package com.ecomarket.service.impl;
 
 import com.ecomarket.dto.UsuarioDTO;
+import com.ecomarket.model.Carrito;
 import com.ecomarket.model.Usuario;
+import com.ecomarket.repository.CarritoRepository;
 import com.ecomarket.repository.UsuarioRepository;
 import com.ecomarket.service.UsuarioService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -15,6 +19,18 @@ import java.util.stream.Collectors;
 public class UsuarioServiceImpl implements UsuarioService {
 
     private final UsuarioRepository usuarioRepository;
+
+    @Autowired
+    private CarritoRepository carritoRepository;
+
+    public void crearCarritoParaNuevoUsuario(Usuario usuario) {
+        Carrito nuevoCarrito = Carrito.builder()
+                .usuario(usuario)
+                .fechaCreacion(LocalDateTime.now())
+                .build();
+
+        carritoRepository.save(nuevoCarrito);
+    }
 
     @Override
     public List<UsuarioDTO> obtenerTodos() {
@@ -33,6 +49,7 @@ public class UsuarioServiceImpl implements UsuarioService {
     @Override
     public UsuarioDTO crear(Usuario usuario) {
         Usuario usuarioGuardado = usuarioRepository.save(usuario);
+        this.crearCarritoParaNuevoUsuario(usuarioGuardado);
         return convertirADTO(usuarioGuardado);
     }
 

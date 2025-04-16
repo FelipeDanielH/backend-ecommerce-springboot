@@ -1,5 +1,7 @@
 package com.ecomarket.controller;
 
+import com.ecomarket.dto.carrito.CarritoActualizarCantidadRequest;
+import com.ecomarket.dto.carrito.CarritoAgregarProductoRequest;
 import com.ecomarket.dto.carrito.CarritoDTO;
 import com.ecomarket.service.CarritoService;
 import lombok.RequiredArgsConstructor;
@@ -24,12 +26,19 @@ public class CarritoController {
         return ResponseEntity.noContent().build();
     }
 
-    @PutMapping("/{usuarioId}/producto/{productoId}")
-    public ResponseEntity<Void> modificarCantidad(@PathVariable Integer usuarioId,
-                                                  @PathVariable Integer productoId,
-                                                  @RequestParam int cantidad) {
-        carritoService.modificarCantidadProducto(usuarioId, productoId, cantidad);
+    @PutMapping("/{usuarioId}/producto")
+    public ResponseEntity<Void> modificarCantidad(
+            @PathVariable Integer usuarioId,
+            @RequestBody CarritoActualizarCantidadRequest request) {
+        carritoService.modificarCantidadProducto(usuarioId, request.getProductoId(), request.getCantidad());
         return ResponseEntity.ok().build();
     }
 
+    @PostMapping("/{usuarioId}/agregar")
+    public ResponseEntity<CarritoDTO> agregarProducto(
+            @PathVariable Integer usuarioId,
+            @RequestBody CarritoAgregarProductoRequest request) {
+        CarritoDTO carritoActualizado = carritoService.agregarProductoAlCarrito(usuarioId, request.getProductoId(), request.getCantidad());
+        return ResponseEntity.ok(carritoActualizado);
+    }
 }

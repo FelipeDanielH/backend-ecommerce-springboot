@@ -12,6 +12,7 @@ import com.ecomarket.service.CarritoService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -63,12 +64,55 @@ public class CarritoServiceImpl implements CarritoService {
         Carrito carrito = carritoRepository.findByUsuarioId(usuarioId)
                 .orElseThrow(() -> new RuntimeException("Carrito no encontrado"));
 
-        CarritoDetalle detalle = carrito.getDetalles().stream()
-                .filter(d -> d.getProducto().getId().equals(productoId))
-                .findFirst()
+        CarritoDetalle detalle = carritoDetalleRepository
+                .findByCarritoIdAndProductoId(carrito.getId(), productoId)
                 .orElseThrow(() -> new RuntimeException("Producto no encontrado en el carrito"));
 
-        detalle.setCantidad(detalle.getCantidad() + cantidad);
-        carritoDetalleRepository.save(detalle);
+        int nuevaCantidad = detalle.getCantidad() + cantidad;
+
+        if (nuevaCantidad <= 0) {
+            carrito.getDetalles().remove(detalle);
+            carritoDetalleRepository.delete(detalle);
+        } else {
+            detalle.setCantidad(nuevaCantidad);
+            carritoDetalleRepository.save(detalle);
+        }
     }
+
+
+    @Override
+    public CarritoDTO agregarProductoAlCarrito(Integer usuarioId, Integer productoId, Integer cantidad) {
+        Carrito carrito = carritoRepository.findByUsuarioId(usuarioId)
+                .orElseGet(() -> {
+                    Usuario usuario = usuarioRepository.findById(usuarioId)
+                            .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
+                    return carritoRepository.save(Carrito.builder()
+                            .usuario(usuario)
+                            .fechaCreacion(LocalDateTime.now())
+                            .build());
+                });
+
+        CarritoDetalle detalle = carritoDetalleRepository
+                .findByCarritoIdAndProductoId(carrito.getId(), productoId)
+                .orElse(null);
+
+        if (detalle != null) {
+            detalle.setCantidad(detalle.getCantidad() + cantidad);
+        } else {
+            detalle = CarritoDetalle.builder()
+                    .carrito(carrito)
+                    .producto(productoRepository.findById(productoId)
+                            .orElseThrow(() -> new RuntimeException("Producto no encontrado")))
+                    .cantidad(cantidad)
+                    .build();
+            carrito.getDetalles().add(detalle);
+        }
+
+        carritoDetalleRepository.save(detalle);
+
+        return obtenerCarritoPorUsuario(usuarioId); // Devuelve el DTO completo
+    }
+
+
+
 }

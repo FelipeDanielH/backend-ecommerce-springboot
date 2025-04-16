@@ -235,6 +235,21 @@ INSERT INTO `productos` (`vendedor_id`, `categoria_id`, `nombre`, `descripcion`,
 VALUES (10, 10, 'Libro de aventuras', 'Un libro emocionante sobre aventuras', 12.00, 75, 'NUEVO');
 SET @producto_10 = LAST_INSERT_ID();
 
+-- Producto 10: Libro de aventuras
+INSERT INTO `productos` (`vendedor_id`, `categoria_id`, `nombre`, `descripcion`, `precio`, `stock`, `estado`)
+VALUES (10, 1, 'Libro de aventurass', 'Un libro emocionante sobre aventuras', 12.00, 75, 'NUEVO');
+SET @producto_11 = LAST_INSERT_ID();
+
+-- Producto 10: Libro de aventuras
+INSERT INTO `productos` (`vendedor_id`, `categoria_id`, `nombre`, `descripcion`, `precio`, `stock`, `estado`)
+VALUES (10, 1, 'Libro de aventurass', 'Un libro emocionante sobre aventuras', 12.00, 75, 'NUEVO');
+SET @producto_12 = LAST_INSERT_ID();
+
+-- Producto 1: Smartphone
+INSERT INTO `productos` (`vendedor_id`, `categoria_id`, `nombre`, `descripcion`, `precio`, `stock`, `estado`)
+VALUES (2, 11, 'Smartphone pulento', 'Smartphone de última generación', 300.00, 10, 'NUEVO');
+SET @producto_13 = LAST_INSERT_ID();
+
 -- Insertar 10 registros en la tabla `reseñas`
 INSERT INTO `reseñas` (`producto_id`, `usuario_id`, `calificacion`, `comentario`)
 VALUES (@producto_1, 1, 5, 'Excelente producto, funciona de maravilla.'),
