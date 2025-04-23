@@ -12,4 +12,6 @@ public interface ImagenProductoService {
     void eliminar(Integer id);
 
     List<ImagenProductoDTO> listarPorProductoId(Integer productoId);
+    List<ImagenProductoDTO> guardarImagenesParaProducto(Integer productoId, List<ImagenProductoDTO> imagenes);
+
 }

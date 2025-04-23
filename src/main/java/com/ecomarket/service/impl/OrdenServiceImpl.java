@@ -104,14 +104,21 @@ public class OrdenServiceImpl implements OrdenService {
         List<DetalleOrdenDTO> detallesDTO = Optional.ofNullable(orden.getDetallesOrden())
                 .orElse(List.of())
                 .stream()
-                .map(detalle -> new DetalleOrdenDTO(
-                        detalle.getId(),
-                        orden.getId(),
-                        detalle.getProducto().getId(),
-                        detalle.getProducto().getNombre(),
-                        detalle.getCantidad(),
-                        detalle.getPrecioUnitario()
-                ))
+                .map(detalle -> {
+                    Producto producto = detalle.getProducto();
+                    Usuario vendedor = producto.getVendedor(); // Asegúrate que Producto tenga esta relación
+
+                    return DetalleOrdenDTO.builder()
+                            .id(detalle.getId())
+                            .ordenId(orden.getId())
+                            .productoId(producto.getId())
+                            .nombreProducto(producto.getNombre())
+                            .cantidad(detalle.getCantidad())
+                            .precioUnitario(detalle.getPrecioUnitario())
+                            .vendedorId(vendedor.getId())
+                            .vendedorNombre(vendedor.getNombre()) // asumiendo que Usuario tiene getNombre()
+                            .build();
+                })
                 .collect(Collectors.toList());
 
         return OrdenDTO.builder()
@@ -123,4 +130,5 @@ public class OrdenServiceImpl implements OrdenService {
                 .fechaOrden(orden.getFechaOrden())
                 .build();
     }
+
 }

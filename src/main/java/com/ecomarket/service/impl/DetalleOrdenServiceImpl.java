@@ -58,13 +58,18 @@ public class DetalleOrdenServiceImpl implements DetalleOrdenService {
      * Metodo auxiliar para convertir una entidad `DetalleOrden` a un `DetalleOrdenDTO`.
      */
     private DetalleOrdenDTO convertirADTO(DetalleOrden detalleOrden) {
-        return new DetalleOrdenDTO(
-                detalleOrden.getId(),
-                detalleOrden.getOrden().getId(),
-                detalleOrden.getProducto().getId(),
-                detalleOrden.getProducto().getNombre(),
-                detalleOrden.getCantidad(),
-                detalleOrden.getPrecioUnitario()
-        );
+        Producto producto = detalleOrden.getProducto();
+        Usuario vendedor = producto.getVendedor();
+
+        return DetalleOrdenDTO.builder()
+                .id(detalleOrden.getId())
+                .ordenId(detalleOrden.getOrden().getId())
+                .productoId(producto.getId())
+                .nombreProducto(producto.getNombre())
+                .cantidad(detalleOrden.getCantidad())
+                .precioUnitario(detalleOrden.getPrecioUnitario())
+                .vendedorId(vendedor.getId())
+                .vendedorNombre(vendedor.getNombre())
+                .build();
     }
 }

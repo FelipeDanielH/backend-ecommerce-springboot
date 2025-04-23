@@ -57,4 +57,21 @@ public class ImagenProductoServiceImpl implements ImagenProductoService{
                 .map(mapper::toDTO)
                 .collect(Collectors.toList());
     }
+
+    @Override
+    public List<ImagenProductoDTO> guardarImagenesParaProducto(Integer productoId, List<ImagenProductoDTO> imagenes) {
+        List<ImagenProducto> entidades = imagenes.stream()
+                .map(dto -> ImagenProducto.builder()
+                        .productoId(productoId) // aseguramos consistencia con la ruta
+                        .urlImagen(dto.getUrlImagen())
+                        .build())
+                .collect(Collectors.toList());
+
+        List<ImagenProducto> guardadas = repository.saveAll(entidades);
+
+        return guardadas.stream()
+                .map(mapper::toDTO)
+                .collect(Collectors.toList());
+    }
+
 }

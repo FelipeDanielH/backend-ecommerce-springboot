@@ -3,6 +3,7 @@ package com.ecomarket.controller;
 import com.ecomarket.dto.ImagenProductoDTO;
 import com.ecomarket.service.ImagenProductoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -41,5 +42,14 @@ public class ImagenProductoController {
     @GetMapping("/producto/{productoId}")
     public List<ImagenProductoDTO> listarPorProducto(@PathVariable Integer productoId) {
         return service.listarPorProductoId(productoId);
+    }
+
+    @PostMapping("/productos/{idProducto}")
+    public ResponseEntity<List<ImagenProductoDTO>> guardarImagenesParaProducto(
+            @PathVariable Integer idProducto,
+            @RequestBody List<ImagenProductoDTO> imagenes) {
+
+        List<ImagenProductoDTO> imagenesGuardadas = service.guardarImagenesParaProducto(idProducto, imagenes);
+        return ResponseEntity.ok(imagenesGuardadas);
     }
 }

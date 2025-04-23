@@ -41,4 +41,10 @@ public class CarritoController {
         CarritoDTO carritoActualizado = carritoService.agregarProductoAlCarrito(usuarioId, request.getProductoId(), request.getCantidad());
         return ResponseEntity.ok(carritoActualizado);
     }
+
+    @DeleteMapping("/{usuarioId}/vaciar")
+    public ResponseEntity<Void> vaciarCarrito(@PathVariable Integer usuarioId) {
+        carritoService.vaciarCarrito(usuarioId);
+        return ResponseEntity.noContent().build();
+    }
 }

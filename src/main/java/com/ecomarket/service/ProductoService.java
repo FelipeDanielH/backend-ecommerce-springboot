@@ -1,6 +1,8 @@
 package com.ecomarket.service;
 
-import com.ecomarket.dto.ProductoDTO;
+import com.ecomarket.dto.producto.ProductoDTO;
+import com.ecomarket.dto.producto.VendedorNombreDTO;
+
 import java.util.List;
 
 public interface ProductoService {
@@ -12,4 +14,6 @@ public interface ProductoService {
     List<ProductoDTO> buscarPorRangoPrecio(Double min, Double max);
     ProductoDTO guardarProducto(ProductoDTO productoDTO);
     void eliminarProducto(Integer id);
+    ProductoDTO actualizarStock(Integer id, Integer nuevoStock);
+    VendedorNombreDTO obtenerNombreVendedorPorProductoId(Integer productoId);
 }

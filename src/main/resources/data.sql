@@ -13,17 +13,17 @@ VALUES ('Tarjeta de Crédito', 'Pago con tarjeta de crédito', 1),
 
 -- Insertar 10 registros en la tabla `usuarios`
 INSERT INTO `usuarios` (`nombre`, `email`, `password`, `telefono`, `direccion`, `tipo`)
-VALUES ('Juan Pérez', 'juanperez@example.com', 'password123', '1234567890', 'Calle Falsa 123', 'COMPRADOR'),
-       ('Ana Gómez', 'anagomez@example.com', 'password123', '0987654321', 'Calle Verdadera 456', 'VENDEDOR'),
-       ('Carlos López', 'carloslopez@example.com', 'password123', '1122334455', 'Avenida Siempre Viva 789', 'ADMIN'),
-       ('Laura Fernández', 'laurafernandez@example.com', 'password123', '6677889900', 'Calle Cualquiera 101',
+VALUES ('Juan Pérez', 'juanperez@example.com', '$2a$10$o7IfldgbgyNjBZ0Fz5BTy.cslMXh1aL1KqUIpqdMvHarqsFU3ZOqi', '1234567890', 'Calle Falsa 123', 'COMPRADOR'),
+       ('Ana Gómez', 'anagomez@example.com', '$2a$10$o7IfldgbgyNjBZ0Fz5BTy.cslMXh1aL1KqUIpqdMvHarqsFU3ZOqi', '0987654321', 'Calle Verdadera 456', 'VENDEDOR'),
+       ('Carlos López', 'carloslopez@example.com', '$2a$10$o7IfldgbgyNjBZ0Fz5BTy.cslMXh1aL1KqUIpqdMvHarqsFU3ZOqi', '1122334455', 'Avenida Siempre Viva 789', 'ADMIN'),
+       ('Laura Fernández', 'laurafernandez@example.com', '$2a$10$o7IfldgbgyNjBZ0Fz5BTy.cslMXh1aL1KqUIpqdMvHarqsFU3ZOqi', '6677889900', 'Calle Cualquiera 101',
         'COMPRADOR'),
-       ('Pedro Martínez', 'pedromartinez@example.com', 'password123', '9988776655', 'Calle Larga 202', 'VENDEDOR'),
-       ('Lucía Rodríguez', 'luciarodriguez@example.com', 'password123', '1230984567', 'Plaza Mayor 303', 'ADMIN'),
-       ('Mario García', 'mariogarcia@example.com', 'password123', '5555555555', 'Calle Real 404', 'COMPRADOR'),
-       ('Elena Sánchez', 'elenasanchez@example.com', 'password123', '6666666666', 'Calle Famosa 505', 'VENDEDOR'),
-       ('Javier Torres', 'javiertorres@example.com', 'password123', '7777777777', 'Calle Bonita 606', 'ADMIN'),
-       ('Sofía Pérez', 'sofiaperez@example.com', 'password123', '8888888888', 'Calle Del Sol 707', 'COMPRADOR');
+       ('Pedro Martínez', 'pedromartinez@example.com', '$2a$10$o7IfldgbgyNjBZ0Fz5BTy.cslMXh1aL1KqUIpqdMvHarqsFU3ZOqi', '9988776655', 'Calle Larga 202', 'VENDEDOR'),
+       ('Lucía Rodríguez', 'luciarodriguez@example.com', '$2a$10$o7IfldgbgyNjBZ0Fz5BTy.cslMXh1aL1KqUIpqdMvHarqsFU3ZOqi', '1230984567', 'Plaza Mayor 303', 'ADMIN'),
+       ('Mario García', 'mariogarcia@example.com', '$2a$10$o7IfldgbgyNjBZ0Fz5BTy.cslMXh1aL1KqUIpqdMvHarqsFU3ZOqi', '5555555555', 'Calle Real 404', 'COMPRADOR'),
+       ('Elena Sánchez', 'elenasanchez@example.com', '$2a$10$o7IfldgbgyNjBZ0Fz5BTy.cslMXh1aL1KqUIpqdMvHarqsFU3ZOqi', '6666666666', 'Calle Famosa 505', 'VENDEDOR'),
+       ('Javier Torres', 'javiertorres@example.com', '$2a$10$o7IfldgbgyNjBZ0Fz5BTy.cslMXh1aL1KqUIpqdMvHarqsFU3ZOqi', '7777777777', 'Calle Bonita 606', 'ADMIN'),
+       ('Sofía Pérez', 'sofiaperez@example.com', '$2a$10$o7IfldgbgyNjBZ0Fz5BTy.cslMXh1aL1KqUIpqdMvHarqsFU3ZOqi', '8888888888', 'Calle Del Sol 707', 'COMPRADOR');
 
 
 -- Insertar categorías principales

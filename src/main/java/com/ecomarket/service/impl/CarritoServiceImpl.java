@@ -68,13 +68,11 @@ public class CarritoServiceImpl implements CarritoService {
                 .findByCarritoIdAndProductoId(carrito.getId(), productoId)
                 .orElseThrow(() -> new RuntimeException("Producto no encontrado en el carrito"));
 
-        int nuevaCantidad = detalle.getCantidad() + cantidad;
-
-        if (nuevaCantidad <= 0) {
+        if (cantidad <= 0) {
             carrito.getDetalles().remove(detalle);
             carritoDetalleRepository.delete(detalle);
         } else {
-            detalle.setCantidad(nuevaCantidad);
+            detalle.setCantidad(cantidad);
             carritoDetalleRepository.save(detalle);
         }
     }
@@ -113,6 +111,16 @@ public class CarritoServiceImpl implements CarritoService {
         return obtenerCarritoPorUsuario(usuarioId); // Devuelve el DTO completo
     }
 
+    @Override
+    public void vaciarCarrito(Integer usuarioId) {
+        Carrito carrito = carritoRepository.findByUsuarioId(usuarioId)
+                .orElseThrow(() -> new RuntimeException("Carrito no encontrado"));
 
+        // Limpia la lista en memoria
+        carrito.getDetalles().clear();
+
+        // Persistencia automática por `orphanRemoval = true`
+        carritoRepository.save(carrito);
+    }
 
 }

@@ -63,6 +63,7 @@ public class SecurityConfig {
         configuration.addAllowedMethod("POST");
         configuration.addAllowedMethod("PUT");
         configuration.addAllowedMethod("DELETE");
+        configuration.addAllowedMethod("PATCH");
         configuration.addAllowedMethod("OPTIONS");  // Incluir el método OPTIONS (para solicitudes preflight)
         configuration.addAllowedHeader("Authorization");  // Permitir la cabecera Authorization
         configuration.addAllowedHeader("Content-Type");  // Permitir la cabecera Content-Type

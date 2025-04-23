@@ -1,6 +1,8 @@
 package com.ecomarket.controller;
 
-import com.ecomarket.dto.ProductoDTO;
+import com.ecomarket.dto.producto.ActualizarStockRequest;
+import com.ecomarket.dto.producto.ProductoDTO;
+import com.ecomarket.dto.producto.VendedorNombreDTO;
 import com.ecomarket.service.ProductoService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -55,5 +57,19 @@ public class ProductoController {
     public ResponseEntity<Void> eliminarProducto(@PathVariable Integer id) {
         productoService.eliminarProducto(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @PatchMapping("/{id}/stock")
+    public ResponseEntity<ProductoDTO> actualizarStock(
+            @PathVariable Integer id,
+            @RequestBody ActualizarStockRequest request) {
+
+        ProductoDTO actualizado = productoService.actualizarStock(id, request.getStock());
+        return ResponseEntity.ok(actualizado);
+    }
+
+    @GetMapping("/{id}/vendedor")
+    public ResponseEntity<VendedorNombreDTO> obtenerNombreVendedor(@PathVariable Integer id) {
+        return ResponseEntity.ok(productoService.obtenerNombreVendedorPorProductoId(id));
     }
 }

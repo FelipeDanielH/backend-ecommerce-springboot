@@ -1,6 +1,7 @@
 package com.ecomarket.service.impl;
 
-import com.ecomarket.dto.ProductoDTO;
+import com.ecomarket.dto.producto.ProductoDTO;
+import com.ecomarket.dto.producto.VendedorNombreDTO;
 import com.ecomarket.model.Categoria;
 import com.ecomarket.model.Producto;
 import com.ecomarket.model.Usuario;
@@ -122,5 +123,32 @@ public class ProductoServiceImpl implements ProductoService {
     @Override
     public void eliminarProducto(Integer id) {
         productoRepository.deleteById(id);
+    }
+
+    @Override
+    public ProductoDTO actualizarStock(Integer id, Integer nuevoStock) {
+        Producto producto = productoRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Producto no encontrado"));
+
+        producto.setStock(nuevoStock);
+
+        if (nuevoStock < 0) {
+            throw new IllegalArgumentException("El stock no puede ser negativo");
+        }
+
+        Producto actualizado = productoRepository.save(producto);
+
+        return convertirAProductoDTO(actualizado);
+    }
+
+    @Override
+    public VendedorNombreDTO obtenerNombreVendedorPorProductoId(Integer productoId) {
+        Producto producto = productoRepository.findById(productoId)
+                .orElseThrow(() -> new RuntimeException("Producto no encontrado"));
+
+        Usuario vendedor = producto.getVendedor();
+        return VendedorNombreDTO.builder()
+                .nombre(vendedor.getNombre())
+                .build();
     }
 }

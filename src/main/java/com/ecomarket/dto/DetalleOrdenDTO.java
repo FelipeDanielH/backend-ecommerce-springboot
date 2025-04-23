@@ -6,6 +6,7 @@ import lombok.*;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class DetalleOrdenDTO {
     private Integer id;
     private Integer ordenId;
@@ -13,4 +14,7 @@ public class DetalleOrdenDTO {
     private String nombreProducto;
     private int cantidad;
     private double precioUnitario;
+
+    private Integer vendedorId;
+    private String vendedorNombre;
 }

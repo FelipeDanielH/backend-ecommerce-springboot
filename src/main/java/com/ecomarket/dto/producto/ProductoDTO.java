@@ -1,4 +1,4 @@
-package com.ecomarket.dto;
+package com.ecomarket.dto.producto;
 
 import lombok.*;
 

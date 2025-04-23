@@ -1,12 +1,6 @@
 package com.ecomarket.dto.carrito;
 
-import com.ecomarket.dto.ProductoDTO;
 import lombok.*;
-
-import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotNull;
-
-import java.math.BigDecimal;
 
 @Getter
 @Setter
