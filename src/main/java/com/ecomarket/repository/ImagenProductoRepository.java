@@ -1,5 +1,6 @@
 package com.ecomarket.repository;
 
+import com.ecomarket.dto.ImagenProductoDTO;
 import com.ecomarket.model.ImagenProducto;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

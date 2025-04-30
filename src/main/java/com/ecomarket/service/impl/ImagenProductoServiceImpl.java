@@ -3,7 +3,9 @@ package com.ecomarket.service.impl;
 import com.ecomarket.dto.ImagenProductoDTO;
 import com.ecomarket.mapper.ImagenProductoMapper;
 import com.ecomarket.model.ImagenProducto;
+import com.ecomarket.model.Producto;
 import com.ecomarket.repository.ImagenProductoRepository;
+import com.ecomarket.repository.ProductoRepository;
 import com.ecomarket.service.ImagenProductoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,6 +17,8 @@ import java.util.stream.Collectors;
 public class ImagenProductoServiceImpl implements ImagenProductoService{
     @Autowired
     private ImagenProductoRepository repository;
+
+    private ProductoRepository productoRepository;
 
     @Autowired
     private ImagenProductoMapper mapper;
@@ -30,6 +34,13 @@ public class ImagenProductoServiceImpl implements ImagenProductoService{
         return repository.findById(id)
                 .map(mapper::toDTO)
                 .orElse(null);
+    }
+
+    @Override
+    public ImagenProductoDTO obtenerPorProductoId(Integer id) {
+        return repository.findByProductoId(id).stream()
+                .map(mapper::toDTO)
+                .toList().get(0);
     }
 
     @Override

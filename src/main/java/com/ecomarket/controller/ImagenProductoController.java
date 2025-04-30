@@ -21,7 +21,7 @@ public class ImagenProductoController {
 
     @GetMapping("/{id}")
     public ImagenProductoDTO obtenerPorId(@PathVariable Integer id) {
-        return service.obtenerPorId(id);
+        return service.obtenerPorProductoId(id);
     }
 
     @GetMapping
