@@ -12,18 +12,13 @@ VALUES ('Tarjeta de Crédito', 'Pago con tarjeta de crédito', 1),
        ('Google Pay', 'Pago mediante Google Pay', 1);
 
 -- Insertar 10 registros en la tabla `usuarios`
-INSERT INTO `usuarios` (`nombre`, `email`, `password`, `telefono`, `direccion`, `tipo`)
-VALUES ('Juan Pérez', 'juanperez@example.com', '$2a$10$o7IfldgbgyNjBZ0Fz5BTy.cslMXh1aL1KqUIpqdMvHarqsFU3ZOqi', '1234567890', 'Calle Falsa 123', 'COMPRADOR'),
-       ('Ana Gómez', 'anagomez@example.com', '$2a$10$o7IfldgbgyNjBZ0Fz5BTy.cslMXh1aL1KqUIpqdMvHarqsFU3ZOqi', '0987654321', 'Calle Verdadera 456', 'VENDEDOR'),
-       ('Carlos López', 'carloslopez@example.com', '$2a$10$o7IfldgbgyNjBZ0Fz5BTy.cslMXh1aL1KqUIpqdMvHarqsFU3ZOqi', '1122334455', 'Avenida Siempre Viva 789', 'ADMIN'),
-       ('Laura Fernández', 'laurafernandez@example.com', '$2a$10$o7IfldgbgyNjBZ0Fz5BTy.cslMXh1aL1KqUIpqdMvHarqsFU3ZOqi', '6677889900', 'Calle Cualquiera 101',
-        'COMPRADOR'),
-       ('Pedro Martínez', 'pedromartinez@example.com', '$2a$10$o7IfldgbgyNjBZ0Fz5BTy.cslMXh1aL1KqUIpqdMvHarqsFU3ZOqi', '9988776655', 'Calle Larga 202', 'VENDEDOR'),
-       ('Lucía Rodríguez', 'luciarodriguez@example.com', '$2a$10$o7IfldgbgyNjBZ0Fz5BTy.cslMXh1aL1KqUIpqdMvHarqsFU3ZOqi', '1230984567', 'Plaza Mayor 303', 'ADMIN'),
-       ('Mario García', 'mariogarcia@example.com', '$2a$10$o7IfldgbgyNjBZ0Fz5BTy.cslMXh1aL1KqUIpqdMvHarqsFU3ZOqi', '5555555555', 'Calle Real 404', 'COMPRADOR'),
-       ('Elena Sánchez', 'elenasanchez@example.com', '$2a$10$o7IfldgbgyNjBZ0Fz5BTy.cslMXh1aL1KqUIpqdMvHarqsFU3ZOqi', '6666666666', 'Calle Famosa 505', 'VENDEDOR'),
-       ('Javier Torres', 'javiertorres@example.com', '$2a$10$o7IfldgbgyNjBZ0Fz5BTy.cslMXh1aL1KqUIpqdMvHarqsFU3ZOqi', '7777777777', 'Calle Bonita 606', 'ADMIN'),
-       ('Sofía Pérez', 'sofiaperez@example.com', '$2a$10$o7IfldgbgyNjBZ0Fz5BTy.cslMXh1aL1KqUIpqdMvHarqsFU3ZOqi', '8888888888', 'Calle Del Sol 707', 'COMPRADOR');
+INSERT INTO `usuarios` (`nombre`, `email`, `password`, `telefono`, `direccion`, `tipo`, `numero_cuenta`)
+VALUES ('Juan Pérez', 'juan.perez@example.com', '$2a$10$o7IfldgbgyNjBZ0Fz5BTy.cslMXh1aL1KqUIpqdMvHarqsFU3ZOqi', '1234567890', 'Calle Falsa 123', 'COMPRADOR', null),
+       ('María Gómez', 'maria.gomez@example.com', '$2a$10$o7IfldgbgyNjBZ0Fz5BTy.cslMXh1aL1KqUIpqdMvHarqsFU3ZOqi', '0987654321', 'Calle Verdadera 456', 'VENDEDOR', '100000000002'),
+       ('Carlos Ruiz', 'carlos.ruiz@example.com', '$2a$10$o7IfldgbgyNjBZ0Fz5BTy.cslMXh1aL1KqUIpqdMvHarqsFU3ZOqi', '1122334455', 'Avenida Siempre Viva 789', 'VENDEDOR', '100000000003'),
+       ('Ana López', 'ana.lopez@example.com', '$2a$10$o7IfldgbgyNjBZ0Fz5BTy.cslMXh1aL1KqUIpqdMvHarqsFU3ZOqi', '6677889900', 'Calle Cualquiera 101', 'COMPRADOR', null),
+       ('Luis Fernández', 'luis.fernandez@example.com', '$2a$10$o7IfldgbgyNjBZ0Fz5BTy.cslMXh1aL1KqUIpqdMvHarqsFU3ZOqi', '9988776655', 'Calle Larga 202', 'VENDEDOR', '100000000005');
+
 
 
 -- Insertar categorías principales
@@ -149,11 +144,7 @@ VALUES (1, 2, '¿Este producto está disponible?'),
        (3, 2, '¿Cuál es el precio de este producto?'),
        (2, 3, 'El precio es de $50.'),
        (1, 3, '¿Puedo pagar con tarjeta de crédito?'),
-       (4, 2, 'Sí, aceptamos tarjetas de crédito.'),
-       (5, 6, '¿Cuándo recibiré mi pedido?'),
-       (7, 5, 'Tu pedido será entregado en 5 días hábiles.'),
-       (6, 8, '¿El producto tiene garantía?'),
-       (9, 1, 'Sí, el producto tiene una garantía de 1 año.');
+       (4, 2, 'Sí, aceptamos tarjetas de crédito.');
 
 -- Insertar 10 registros en la tabla `ordenes`
 INSERT INTO `ordenes` (`comprador_id`, `total`, `estado`)
@@ -161,12 +152,7 @@ VALUES (1, 100.00, 'PENDIENTE'),
        (2, 50.00, 'PAGADO'),
        (3, 150.00, 'ENVIADO'),
        (4, 75.00, 'ENTREGADO'),
-       (5, 200.00, 'CANCELADO'),
-       (6, 120.00, 'PENDIENTE'),
-       (7, 180.00, 'PAGADO'),
-       (8, 90.00, 'ENVIADO'),
-       (9, 110.00, 'ENTREGADO'),
-       (10, 160.00, 'PENDIENTE');
+       (5, 200.00, 'CANCELADO');
 
 -- Insertar 10 registros en la tabla `reportes`
 INSERT INTO `reportes` (`usuario_id`, `tipo`, `descripcion`, `estado`)
@@ -174,12 +160,7 @@ VALUES (1, 'PRODUCTO', 'El producto llegó dañado', 'PENDIENTE'),
        (2, 'ORDEN', 'El pedido fue cancelado sin razón', 'PENDIENTE'),
        (3, 'USUARIO', 'Usuario abusivo en los comentarios', 'PENDIENTE'),
        (4, 'PRODUCTO', 'Producto no coincide con la descripción', 'REVISADO'),
-       (5, 'ORDEN', 'Retraso en la entrega', 'RESUELTO'),
-       (6, 'OTRO', 'Error en el sistema de pago', 'PENDIENTE'), -- 🔹 Posible ajuste aquí
-       (7, 'PRODUCTO', 'Producto no llega en el tiempo acordado', 'PENDIENTE'),
-       (8, 'USUARIO', 'Usuario hizo spam en los mensajes', 'REVISADO'),
-       (9, 'ORDEN', 'Pedido incorrecto', 'RESUELTO'),
-       (10, 'PRODUCTO', 'El producto llegó roto', 'PENDIENTE');
+       (5, 'ORDEN', 'Retraso en la entrega', 'RESUELTO');
 
 -- Insertar 10 registros en la tabla `productos`
 -- Insertar productos y obtener sus IDs generados automáticamente
@@ -210,58 +191,13 @@ INSERT INTO `productos` (`vendedor_id`, `categoria_id`, `nombre`, `descripcion`,
 VALUES (5, 5, 'Pelota de fútbol', 'Pelota de fútbol tamaño estándar', 15.00, 30, 'NUEVO');
 SET @producto_5 = LAST_INSERT_ID();
 
--- Producto 6: Bicicleta de montaña
-INSERT INTO `productos` (`vendedor_id`, `categoria_id`, `nombre`, `descripcion`, `precio`, `stock`, `estado`)
-VALUES (6, 6, 'Bicicleta de montaña', 'Bicicleta para senderismo', 400.00, 20, 'NUEVO');
-SET @producto_6 = LAST_INSERT_ID();
-
--- Producto 7: Silla de oficina
-INSERT INTO `productos` (`vendedor_id`, `categoria_id`, `nombre`, `descripcion`, `precio`, `stock`, `estado`)
-VALUES (7, 7, 'Silla de oficina', 'Silla ergonómica de oficina', 80.00, 15, 'NUEVO');
-SET @producto_7 = LAST_INSERT_ID();
-
--- Producto 8: Crema facial
-INSERT INTO `productos` (`vendedor_id`, `categoria_id`, `nombre`, `descripcion`, `precio`, `stock`, `estado`)
-VALUES (8, 8, 'Crema facial', 'Crema hidratante para la piel', 25.00, 50, 'NUEVO');
-SET @producto_8 = LAST_INSERT_ID();
-
--- Producto 9: Medicamento para la gripe
-INSERT INTO `productos` (`vendedor_id`, `categoria_id`, `nombre`, `descripcion`, `precio`, `stock`, `estado`)
-VALUES (9, 9, 'Medicamento para la gripe', 'Medicamento para aliviar los síntomas de la gripe', 10.00, 200, 'NUEVO');
-SET @producto_9 = LAST_INSERT_ID();
-
--- Producto 10: Libro de aventuras
-INSERT INTO `productos` (`vendedor_id`, `categoria_id`, `nombre`, `descripcion`, `precio`, `stock`, `estado`)
-VALUES (10, 10, 'Libro de aventuras', 'Un libro emocionante sobre aventuras', 12.00, 75, 'NUEVO');
-SET @producto_10 = LAST_INSERT_ID();
-
--- Producto 10: Libro de aventuras
-INSERT INTO `productos` (`vendedor_id`, `categoria_id`, `nombre`, `descripcion`, `precio`, `stock`, `estado`)
-VALUES (10, 1, 'Libro de aventurass', 'Un libro emocionante sobre aventuras', 12.00, 75, 'NUEVO');
-SET @producto_11 = LAST_INSERT_ID();
-
--- Producto 10: Libro de aventuras
-INSERT INTO `productos` (`vendedor_id`, `categoria_id`, `nombre`, `descripcion`, `precio`, `stock`, `estado`)
-VALUES (10, 1, 'Libro de aventurass', 'Un libro emocionante sobre aventuras', 12.00, 75, 'NUEVO');
-SET @producto_12 = LAST_INSERT_ID();
-
--- Producto 1: Smartphone
-INSERT INTO `productos` (`vendedor_id`, `categoria_id`, `nombre`, `descripcion`, `precio`, `stock`, `estado`)
-VALUES (2, 11, 'Smartphone pulento', 'Smartphone de última generación', 300.00, 10, 'NUEVO');
-SET @producto_13 = LAST_INSERT_ID();
-
 -- Insertar 10 registros en la tabla `reseñas`
 INSERT INTO `reseñas` (`producto_id`, `usuario_id`, `calificacion`, `comentario`)
 VALUES (@producto_1, 1, 5, 'Excelente producto, funciona de maravilla.'),
        (@producto_2, 2, 4, 'Buena calidad, pero un poco caro.'),
        (@producto_3, 3, 5, 'Muy sabroso y refrescante, me encanta.'),
        (@producto_4, 4, 3, 'El sofá es cómodo, pero llegó un poco dañado.'),
-       (@producto_5, 5, 5, 'Perfecta para jugar fútbol, la recomiendo.'),
-       (@producto_6, 6, 4, 'Muy buena bici, aunque un poco pesada.'),
-       (@producto_7, 7, 5, 'Silla muy cómoda y ergonómica.'),
-       (@producto_8, 8, 4, 'Buena crema, pero tarda un poco en absorberse.'),
-       (@producto_9, 9, 5, 'Me alivia mucho cuando estoy resfriado.'),
-       (@producto_10, 10, 4, 'Buen libro, aunque el final podría ser mejor.');
+       (@producto_5, 5, 5, 'Perfecta para jugar fútbol, la recomiendo.');
 
 -- Insertar 10 registros en la tabla `transacciones_pago`
 INSERT INTO `transacciones_pago` (`orden_id`, `metodo_pago_id`, `monto`, `moneda`, `estado`)
@@ -269,12 +205,7 @@ VALUES (1, 1, 100.00, 'CLP', 'COMPLETADO'),
        (2, 2, 50.00, 'CLP', 'COMPLETADO'),
        (3, 3, 150.00, 'CLP', 'FALLIDO'),
        (4, 4, 75.00, 'CLP', 'COMPLETADO'),
-       (5, 5, 200.00, 'CLP', 'PENDIENTE'),
-       (6, 6, 120.00, 'CLP', 'COMPLETADO'),
-       (7, 7, 180.00, 'CLP', 'PENDIENTE'),
-       (8, 8, 90.00, 'CLP', 'COMPLETADO'),
-       (9, 9, 110.00, 'CLP', 'COMPLETADO'),
-       (10, 10, 160.00, 'CLP', 'FALLIDO');
+       (5, 5, 200.00, 'CLP', 'PENDIENTE');
 
 
 
@@ -295,59 +226,28 @@ VALUES
     (@producto_4, 'https://images.unsplash.com/photo-1598300053650-d7e10f27c8d4?w=800&auto=format'), -- Sofá de 3 plazas
     (@producto_5, 'https://images.unsplash.com/photo-1508606572321-901ea443707f?w=800&auto=format'), -- Pelota de fútbol
     (@producto_5, 'https://images.unsplash.com/photo-1579982175379-5e1e6e1f6c3e?w=800&auto=format'), -- Pelota de fútbol
-    (@producto_5, 'https://images.unsplash.com/photo-1593113598332-4fbbf0c6f01e?w=800&auto=format'), -- Pelota de fútbol
-    (@producto_6, 'https://images.unsplash.com/photo-1524549113650-1e569f81d6a6?w=800&auto=format'), -- Bicicleta de montaña
-    (@producto_6, 'https://images.unsplash.com/photo-1508972553412-8e4f46a51e92?w=800&auto=format'), -- Bicicleta de montaña
-    (@producto_6, 'https://images.unsplash.com/photo-1524549113650-1e569f81d6a6?w=800&auto=format'), -- Bicicleta de montaña
-    (@producto_7, 'https://images.unsplash.com/photo-1589820296156-6c6c9f99f4c5?w=800&auto=format'), -- Silla de oficina
-    (@producto_7, 'https://images.unsplash.com/photo-1589820296156-6c6c9f99f4c5?w=800&auto=format'), -- Silla de oficina
-    (@producto_7, 'https://images.unsplash.com/photo-1589820296156-6c6c9f99f4c5?w=800&auto=format'), -- Silla de oficina
-    (@producto_8, 'https://images.unsplash.com/photo-1580910051073-0c7f62b3ca9a?w=800&auto=format'), -- Crema facial
-    (@producto_8, 'https://images.unsplash.com/photo-1580910051073-0c7f62b3ca9a?w=800&auto=format'), -- Crema facial
-    (@producto_8, 'https://images.unsplash.com/photo-1580910051073-0c7f62b3ca9a?w=800&auto=format'), -- Crema facial
-    (@producto_9, 'https://images.unsplash.com/photo-1580910051073-0c7f62b3ca9a?w=800&auto=format'), -- Medicamento para la gripe
-    (@producto_9, 'https://images.unsplash.com/photo-1580910051073-0c7f62b3ca9a?w=800&auto=format'), -- Medicamento para la gripe
-    (@producto_9, 'https://images.unsplash.com/photo-1580910051073-0c7f62b3ca9a?w=800&auto=format'), -- Medicamento para la gripe
-    (@producto_10, 'https://images.unsplash.com/photo-1580910051073-0c7f62b3ca9a?w=800&auto=format'), -- Libro de aventuras
-    (@producto_10, 'https://images.unsplash.com/photo-1580910051073-0c7f62b3ca9a?w=800&auto=format'), -- Libro de aventuras
-    (@producto_10, 'https://images.unsplash.com/photo-1580910051073-0c7f62b3ca9a?w=800&auto=format'); -- Libro de aventuras
-
+    (@producto_5, 'https://images.unsplash.com/photo-1593113598332-4fbbf0c6f01e?w=800&auto=format'); -- Pelota de fútbol
 
 INSERT INTO `favoritos` (`usuario_id`, `producto_id`)
 VALUES (1, 1),
        (2, 2),
        (3, 3),
        (4, 4),
-       (5, 5),
-       (6, 6),
-       (7, 7),
-       (8, 8),
-       (9, 9),
-       (10, 10);
+       (5, 5);
 
 INSERT INTO `historial_visitas` (`usuario_id`, `producto_id`)
 VALUES (1, 1),
        (2, 2),
        (3, 3),
        (4, 4),
-       (5, 5),
-       (6, 6),
-       (7, 7),
-       (8, 8),
-       (9, 9),
-       (10, 10);
+       (5, 5);
 
 INSERT INTO `detalle_orden` (`orden_id`, `producto_id`, `cantidad`, `precio_unitario`)
 VALUES (1, 1, 1, 300.00),
        (2, 2, 2, 20.00),
        (3, 3, 3, 5.00),
        (4, 4, 1, 250.00),
-       (5, 5, 4, 15.00),
-       (6, 6, 1, 400.00),
-       (7, 7, 2, 80.00),
-       (8, 8, 1, 25.00),
-       (9, 9, 5, 10.00),
-       (10, 10, 2, 12.00);
+       (5, 5, 4, 15.00);
 
 -- Insertar 10 registros en la tabla `envios`
 INSERT INTO `envios` (`orden_id`, `direccion_envio`, `estado`)
@@ -355,12 +255,7 @@ VALUES (1, 'Calle Falsa 123, Ciudad X', 'PREPARANDO'),
        (2, 'Calle Verdadera 456, Ciudad Y', 'ENVIADO'),
        (3, 'Avenida Siempre Viva 789, Ciudad Z', 'EN REPARTO'),
        (4, 'Calle Cualquiera 101, Ciudad A', 'ENTREGADO'),
-       (5, 'Calle Larga 202, Ciudad B', 'PREPARANDO'),
-       (6, 'Plaza Mayor 303, Ciudad C', 'ENVIADO'),
-       (7, 'Calle Real 404, Ciudad D', 'EN REPARTO'),
-       (8, 'Calle Famosa 505, Ciudad E', 'ENTREGADO'),
-       (9, 'Calle Bonita 606, Ciudad F', 'PREPARANDO'),
-       (10, 'Calle Del Sol 707, Ciudad G', 'ENVIADO');
+       (5, 'Calle Larga 202, Ciudad B', 'PREPARANDO');
 
 INSERT INTO `carritos` (`usuario_id`, `fecha_creacion`)
 VALUES
@@ -368,22 +263,11 @@ VALUES
     (2, NOW()),
     (3, NOW()),
     (4, NOW()),
-    (5, NOW()),
-    (6, NOW()),
-    (7, NOW()),
-    (8, NOW()),
-    (9, NOW()),
-    (10, NOW());
+    (5, NOW());
 
 INSERT INTO `carrito_detalle` (`carrito_id`, `producto_id`, `cantidad`)
 VALUES
     (1, 1, 2),
     (2, 3, 5),
     (3, 2, 1),
-    (4, 5, 3),
-    (5, 7, 2),
-    (6, 10, 1),
-    (7, 6, 1),
-    (8, 9, 2),
-    (9, 4, 1),
-    (10, 8, 4);
+    (4, 5, 3);

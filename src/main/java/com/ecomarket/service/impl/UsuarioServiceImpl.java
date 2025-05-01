@@ -63,6 +63,7 @@ public class UsuarioServiceImpl implements UsuarioService {
         usuarioExistente.setTelefono(usuario.getTelefono());
         usuarioExistente.setDireccion(usuario.getDireccion());
         usuarioExistente.setTipo(usuario.getTipo());
+        usuarioExistente.setNumeroCuenta(usuario.getNumeroCuenta());
 
         return convertirADTO(usuarioRepository.save(usuarioExistente));
     }
@@ -80,6 +81,7 @@ public class UsuarioServiceImpl implements UsuarioService {
                 .telefono(usuario.getTelefono())
                 .direccion(usuario.getDireccion())
                 .tipo(usuario.getTipo().name())
+                .numeroCuenta(usuario.getNumeroCuenta())
                 .build();
     }
 }

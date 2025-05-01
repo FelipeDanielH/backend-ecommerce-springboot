@@ -34,12 +34,15 @@ public class CarritoServiceImpl implements CarritoService {
                     return carritoRepository.save(Carrito.builder().usuario(usuario).build());
                 });
 
+
+
         List<CarritoDetalleDTO> detalles = carrito.getDetalles().stream()
                 .map(detalle -> CarritoDetalleDTO.builder()
                         .productoId(detalle.getProducto().getId())
                         .productoNombre(detalle.getProducto().getNombre())
                         .cantidad(detalle.getCantidad())
                         .precioUnitario(detalle.getProducto().getPrecio().doubleValue())
+                        .vendedorId(detalle.getProducto().getVendedor().getId())
                         .build())
                 .collect(Collectors.toList());
 

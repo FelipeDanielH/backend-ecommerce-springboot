@@ -38,6 +38,9 @@ public class Usuario {
     @Column(columnDefinition = "ENUM('comprador','vendedor','admin') DEFAULT 'comprador'")
     private TipoUsuario tipo;
 
+    @Column(name = "numero_cuenta", nullable = true)
+    private String numeroCuenta;
+
     @Column(name = "fecha_registro", columnDefinition = "TIMESTAMP")
     private LocalDateTime fechaRegistro = LocalDateTime.now();
 }

@@ -38,4 +38,19 @@ public class Producto {
 
     @Column(name = "fecha_publicacion", nullable = false, columnDefinition = "TIMESTAMP")
     private LocalDateTime fechaPublicacion = LocalDateTime.now();
+
+    @Override
+    public String toString() {
+        return "Producto{" +
+                "id=" + id +
+                ", vendedor=" + vendedor +
+                ", categoria=" + categoria +
+                ", nombre='" + nombre + '\'' +
+                ", descripcion='" + descripcion + '\'' +
+                ", precio=" + precio +
+                ", stock=" + stock +
+                ", estado=" + estado +
+                ", fechaPublicacion=" + fechaPublicacion +
+                '}';
+    }
 }

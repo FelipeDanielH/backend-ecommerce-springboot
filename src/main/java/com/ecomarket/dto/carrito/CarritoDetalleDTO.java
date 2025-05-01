@@ -12,4 +12,5 @@ public class CarritoDetalleDTO {
     private String productoNombre;
     private Integer cantidad;
     private Double precioUnitario;
+    private Integer vendedorId;
 }

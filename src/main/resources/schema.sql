@@ -34,6 +34,7 @@ CREATE TABLE `usuarios` (
                             `telefono` varchar(20) DEFAULT NULL,
                             `direccion` text,
                             `tipo` enum('COMPRADOR','VENDEDOR','ADMIN') DEFAULT 'COMPRADOR',
+                            `numero_cuenta` varchar(20) ,
                             `fecha_registro` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
                             PRIMARY KEY (`id`),
                             UNIQUE KEY `email` (`email`)

@@ -29,4 +29,12 @@ public class Carrito {
 
     @OneToMany(mappedBy = "carrito", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<CarritoDetalle> detalles = new ArrayList<>();
+
+    @Override
+    public String toString() {
+        return "Carrito{id=" + id +
+                ", usuario=" + usuario.getId() +
+                ", detalles=" + detalles +
+                '}';
+    }
 }

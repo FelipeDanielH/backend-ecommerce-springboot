@@ -35,6 +35,7 @@ public class JwtUtils {
                 .claim("telefono", usuario.getTelefono()) // Teléfono
                 .claim("direccion", usuario.getDireccion()) // Dirección
                 .claim("tipo", usuario.getTipo().name()) // Tipo de usuario (ej. ADMIN, USER)
+                .claim("numeroCuenta", usuario.getNumeroCuenta())
                 .issuedAt(new Date())
                 .expiration(new Date(System.currentTimeMillis() + jwtExpirationMs))
                 .signWith(getSigningKey(), Jwts.SIG.HS512) // Firma usando el algoritmo HS512
